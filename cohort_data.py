@@ -130,7 +130,7 @@ def hogwarts_by_house(filename):
                     sorted(dumbledores_army),
                     sorted(ghosts), 
                     sorted(instructors)]
-    print "yay"
+
     return all_students
 
 
@@ -149,8 +149,21 @@ def all_students_tuple_list(filename):
 
     student_list = []
 
-    # Code goes here
+    cohort_data = open(filename)
 
+    for line in cohort_data: 
+        line = line.rstrip()
+        words = line.split("|")
+        full_name = words[0] + " " + words[1]
+        house = words[2]
+        advisor = words[3]
+        cohort = words[4]
+        if(cohort =="G" or cohort == "I"):
+            continue
+        
+        student_list.append((full_name, house, advisor, cohort))
+
+    cohort_data.close()
     return student_list
 
 
