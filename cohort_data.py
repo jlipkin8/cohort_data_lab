@@ -201,23 +201,44 @@ def find_cohort_by_student_name(student_list):
 # Further Study Questions
 
 
-# def find_name_duplicates(filename):
-#     """TODO: Return a set of student last names that have duplicates.
+def find_name_duplicates(filename):
+    """TODO: Return a set of student last names that have duplicates.
 
-#     Iterate over the data to find any last names that exist across all cohorts.
-#     Use set operations (set math) to create and return a set of these names.
+    Iterate over the data to find any last names that exist across all cohorts.
+    Use set operations (set math) to create and return a set of these names.
 
-#     For example:
-#     >>> find_name_duplicates("cohort_data.txt")
-#     set(['Weasley'])
+    For example:
+    >>> find_name_duplicates("cohort_data.txt")
+    set(['Weasley'])
 
-#     """
+    """
 
-#     duplicate_names = set()
+    duplicate_names = set()
+    winter_16 = set()
+    spring_16 = set()
+    summer_16 = set()
+    fall_15 = set()
+    # Code goes here
+    cohort_data = open(filename)
+    for line in cohort_data: 
+        line = line.rstrip()
+        words = line.split('|')
 
-#     # Code goes here
+        l_name = words[1]
+        cohort = words[-1]
 
-#     return duplicate_names
+        if(cohort == 'Fall 2015'):
+            fall_15.add(l_name)
+        elif(cohort == 'Spring 2016'):
+            spring_16.add(l_name)
+        elif(cohort == 'Summer 2016'):
+            summer_16.add(l_name)
+        elif(cohort == 'Winter 2016'):
+            winter_16.add(l_name)
+
+
+    duplicate_names =  winter_16 & spring_16 & summer_16 & fall_15
+    return duplicate_names
 
 
 def find_house_members_by_student_name(student_list):
@@ -253,8 +274,8 @@ def find_house_members_by_student_name(student_list):
 #############################################################################
 # Here is some useful code to run these functions without doctests!
 
-all_students_data = all_students_tuple_list("cohort_data.txt")
-find_cohort_by_student_name(all_students_data)
+# all_students_data = all_students_tuple_list("cohort_data.txt")
+# find_cohort_by_student_name(all_students_data)
 # find_house_members_by_student_name(all_students_data)
 
 
