@@ -130,7 +130,7 @@ def hogwarts_by_house(filename):
                     sorted(dumbledores_army),
                     sorted(ghosts), 
                     sorted(instructors)]
-
+    print "yay"
     return all_students
 
 
